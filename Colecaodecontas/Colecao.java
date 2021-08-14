@@ -9,7 +9,13 @@ import java.util.ArrayList;
 public class Colecao {
     ArrayList<Conta> listaDeContas= new ArrayList<>();
    public void Adicionar(Object conta){
-           listaDeContas.add((Conta) conta); 
+           if(conta instanceof Poupança == true){
+               listaDeContas.add((Poupança) conta);
+               
+           }
+           else if(conta instanceof Poupança == false){
+               listaDeContas.add((Conta) conta);
+           }
            System.out.println("\nA conta foi adicionada a colecao");
     };
      public void Remover(int id){
@@ -22,10 +28,19 @@ public class Colecao {
     };
      public void Listar(){
          
-         for(int i=0; i<listaDeContas.size();i++ ){
-             System.out.println("\nNumero da Conta: " + listaDeContas.get(i).getId() + "\nDono da conta: " + listaDeContas.get(i).getNome() + "\nSaldo: " + listaDeContas.get(i).getSaldo());
-         }
+            for(int i=0; i<listaDeContas.size();i++ ){
+                System.out.println("\n-------------------");
+                 System.out.println("\nNumero da Conta: " + listaDeContas.get(i).getId() + "\nSaldo: " + listaDeContas.get(i).getSaldo());
+            }
      }
      
-    
+    public void renderPoupanca(){
+        for(int i=0; i<listaDeContas.size();i++ ){
+               if(listaDeContas.get(i) instanceof Poupança){
+                   Poupança auxiliar = (Poupança) listaDeContas.get(i);
+                   auxiliar.renderJuros(0.1f);
+                   System.out.println("\nParabens conta:"+listaDeContas.get(i).getId()+"\nSeu novo saldo e: " + listaDeContas.get(i).getSaldo());
+               }
+            }
+    }    
 }
