@@ -6,28 +6,28 @@ package Colecaodecontas;
  * @author Felipe
  */
 public class Conta {
-  private int id;
-  private int saldo;
-  private String nome;
-  
+  private final int Numero;
+  private float saldo;
+   
   public Conta(int idConta){
-      this.id = idConta;
+      this.Numero = idConta;
   }
   public int getId(){
-      return this.id;
+      return this.Numero;
   }
   
-  public int getSaldo(){
+  public float getSaldo(){
   return this.saldo;
   }
-  void setSaldo(int saldo){
-      this.saldo = saldo;
-  }
-   public String getNome(){
-  return this.nome;
-  }
-  void setNome(String nome){
-      this.nome = nome;
-  }
-    
+ public void Creditar(float valor){
+     this.saldo+=valor;
+ }
+    public void Debitar(float valor){
+     if(this.saldo - valor>=0){
+         this.saldo-=valor;
+     }
+     else{
+         System.out.println("Saldo insuficiente!!");
+     }
+ }
 }
